@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: mybi
+  # 默认 dev 环境
+  profiles:
+    active: dev
+  # 支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybi
+    username: 用户名
+    password: 密码
+  # redis配置
+  redis:
+    host: 替换为自己的主机地址
+    password: 密码
+    database: 1
+    port: 6379
+  # rabbitmq配置
+  rabbitmq:
+    host: 替换为自己的主机地址
+    port: 5672
+    username: 用户名
+    password: 密码
+server:
+  address: 0.0.0.0
+  port: 8080
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除的值（默认为1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为0）
+# 鱼聪明 AI 配置(https://yucongming.com/)
+yuapi:
+  client:
+    access-key: 替换为自己的access-key
+    secret-key: 替换为自己的secret-key
